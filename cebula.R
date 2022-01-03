@@ -3,6 +3,10 @@ library("skimr")
 library("lubridate")
 library("readxl")
 library("dplyr")
+library("viridis")
+install.packages("ggExtra")
+library("gridExtra")
+library("ggplot2")
 
 cebula <- read.csv("cebula.csv")
 View(cebula)
@@ -121,7 +125,6 @@ cebula %>%
 # observation: variety 'Big' is sold only in one state, but it's still one of the most popular
 
 # plot illustrating daily numbers of arrivals for top 6 varieties
-library("viridis")
 cols <- c("#5552fe", "#a8ff9f", "#ea0056", "#017da7", "#d98800", "#ffa48e")
 cebula %>%
   filter(variety=="Red" | variety =="Local" | variety=="1st Sort"
@@ -200,7 +203,6 @@ cebula %>%
 # is it connected with prices?
 # according to graph below it's not
 
-library("ggplot2")
 # prices of onion in time
 cols <- c("#e00029", "#39ff6b", "#3d0048")
 cebula %>%
@@ -224,8 +226,6 @@ ggplot(cebula, aes(arrival_date, modal_price, col=variety)) +
 
 # plots of modal price and amount of arrivals throughout the year for
 # seven the most popular varieties
-install.packages("ggExtra")
-library("gridExtra")
 cols <- c("#2c0d00", "#96d500", "#00379d", "#fff884", "#d585ff", "#007d68", "#ec006b")
 
 g1 <- cebula %>%
